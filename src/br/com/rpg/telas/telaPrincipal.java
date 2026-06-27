@@ -2,17 +2,19 @@ package br.com.rpg.telas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.Box;
+import java.awt.Component;
+import java.awt.FlowLayout;
 
 public class telaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTextField textField;
 
 	/**
@@ -37,17 +39,16 @@ public class telaPrincipal extends JFrame {
 	public telaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 518, 351);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		
-		JLabel lblNewLabel = new JLabel("teste");
-		contentPane.add(lblNewLabel);
+		getContentPane().setLayout(null);
 		
 		textField = new JTextField();
-		contentPane.add(textField);
+		textField.setBounds(197, 103, 86, 20);
+		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(276, 134, 46, 14);
+		getContentPane().add(lblNewLabel);
 
 	}
-
 }
