@@ -48,11 +48,14 @@ public class telaInicial extends JFrame {
 	 * Create the frame.
 	 */
 	public telaInicial() {
+		setResizable(false);
+		setTitle("Tela inicial");
 		
 		//frave visual (codigo alterado tambem quando modificado a parte visual diretamente)
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setToolTipText("");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -72,9 +75,11 @@ public class telaInicial extends JFrame {
 		descricao.setBounds(57, 97, 152, 70);
 		contentPane.add(descricao);
 		
-		JButton btnConectar = new JButton("Conectar");
+		JButton btnConectar = new JButton("Iniciar");
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//ao clicar no botão realiza o metodo
+				logar();
 			}
 		});
 		btnConectar.setBounds(175, 203, 89, 23);
@@ -98,4 +103,23 @@ public class telaInicial extends JFrame {
 			textConexao.setText("Não conectado ao banco de dados");
 		}
 	}
+	
+	public void logar() {
+		//não é realmente um login, vai apenas passar para a pagina principal
+		
+		//abrir a tela principal
+		telaPrincipal principal = new telaPrincipal();
+		principal.setVisible(true);
+		
+		//fechar a tela atual (login)
+		this.dispose();
+		
+		//fechar a conexao com o banco
+		try {
+			conexao.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 }
