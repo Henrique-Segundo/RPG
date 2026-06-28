@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 
 import java.sql.*;
 import br.com.rpg.dal.ModuloConexao;
+import javax.swing.ImageIcon;
 
 public class telaInicial extends JFrame {
 	
@@ -22,6 +23,7 @@ public class telaInicial extends JFrame {
 	PreparedStatement pst = null;
 	ResultSet rs = null;
 	
+	//criação da logica da janela (padrão)
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -47,9 +49,7 @@ public class telaInicial extends JFrame {
 	 */
 	public telaInicial() {
 		
-		conexao = ModuloConexao.conector();
-		System.out.println(conexao);
-		
+		//frave visual (codigo alterado tambem quando modificado a parte visual diretamente)
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -69,7 +69,7 @@ public class telaInicial extends JFrame {
 				+ "Alunos:<br>"
 				+ "Henrique Segundo<br>"
 				+ "João Amauri</html>");
-		descricao.setBounds(57, 97, 152, 52);
+		descricao.setBounds(57, 97, 152, 70);
 		contentPane.add(descricao);
 		
 		JButton btnConectar = new JButton("Conectar");
@@ -80,7 +80,22 @@ public class telaInicial extends JFrame {
 		btnConectar.setBounds(175, 203, 89, 23);
 		contentPane.add(btnConectar);
 		
+		JLabel textConexao = new JLabel("conexao");
+		textConexao.setIcon(null);
+		textConexao.setBounds(57, 169, 198, 23);
+		contentPane.add(textConexao);
 		
-
+		//conexao com o banco de dados
+		conexao = ModuloConexao.conector();
+		System.out.println(conexao);
+		if(conexao != null) {
+			//erro na exibição
+			//textConexao.setIcon(new ImageIcon(getClass().getResource("/br/com/rpg/icones/bdok.png")));
+			textConexao.setText("Conectado ao banco de dados");
+		}else {
+			//erro na exibição
+			//textConexao.setIcon(new ImageIcon(getClass().getResource("/br/com/rpg/icones/bderro.png")));
+			textConexao.setText("Não conectado ao banco de dados");
+		}
 	}
 }
