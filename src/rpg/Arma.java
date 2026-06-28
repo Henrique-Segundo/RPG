@@ -1,12 +1,12 @@
 package rpg;
 
 public class Arma extends Equipamento{
-
-	String facilidadeUso;
-	String proposito;
-	String dano;
-	String critico;
-	String alcance;
-	String tipo;
+	public int equipamento_id;
+	public String facilidadeUso;
+	public String proposito;
+	public String dano;
+	public String critico;
+	public String alcance;
+	public String tipo;
 	
 }
