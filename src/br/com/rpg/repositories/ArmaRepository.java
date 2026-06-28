@@ -15,7 +15,7 @@ public class ArmaRepository {
 
 	PreparedStatement pst = null;
 	ResultSet rs = null;
-
+	
 	public ArmaRepository() {
 		this.conexao = ModuloConexao.conector();
 	}
@@ -26,7 +26,7 @@ public class ArmaRepository {
 		String sql = """
 				SELECT e.id,e.nome,e.preco,e.espacos,e.descricao,a.facilidadeUso,a.proposito,a.dano,a.critico,a.alcance,a.tipo
 				FROM tbarma AS a, tbequipamento AS e
-				WHERE WHERE e.id=a.equipamento_id
+				WHERE e.id=a.equipamento_id
 				""";
 		try {
 			pst = conexao.prepareStatement(sql);
@@ -178,4 +178,12 @@ public class ArmaRepository {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        ArmaRepository repo = new ArmaRepository();
+        Arma arma = repo.listarPorId(1);
+       System.out.println(arma);
+    }
+	
 }

@@ -11,9 +11,15 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import br.com.rpg.repositories.ArmaRepository;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import rpg.Arma;
 
 public class TelaCadastrarArma extends JInternalFrame {
 
+	ArmaRepository armaDAO = new ArmaRepository();
+	
 	private static final long serialVersionUID = 1L;
 	private JTextField textId;
 	private JTextField textNome;
@@ -111,6 +117,22 @@ public class TelaCadastrarArma extends JInternalFrame {
 		JButton btnAdi = new JButton("Adicionar");
 		
 		JButton btnPes = new JButton("Pesquisar");
+		btnPes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			// Ao clicar no botão pesquisar
+			Arma resultado = armaDAO.listarPorId(Integer.parseInt(textId.getText()));
+			textNome.setText(resultado.nome);
+			textPre.setText(Integer.toString(resultado.preco));
+			textEsp.setText(Integer.toString(resultado.espacos));
+			textDes.setText(resultado.descricao);
+			textFac.setText(resultado.facilidadeUso);
+			textPro.setText(resultado.proposito);
+			textDan.setText(resultado.dano);
+			textCri.setText(resultado.critico);
+			textAlc.setText(resultado.alcance);
+			textTip.setText(resultado.tipo);
+			}
+		});
 		
 		JButton btnEdi = new JButton("Editar");
 		
