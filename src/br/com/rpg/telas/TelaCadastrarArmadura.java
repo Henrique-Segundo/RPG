@@ -59,33 +59,60 @@ public class TelaCadastrarArmadura extends JInternalFrame {
 		setBounds(0, 0, 640, 480);
 		
 		JLabel lblID = new JLabel("Id");
+		lblID.setBounds(10, 32, 22, 14);
 		
 		JLabel lblNome = new JLabel("Nome");
+		lblNome.setBounds(10, 66, 54, 14);
 		
 		JLabel lblPre = new JLabel("Preço");
+		lblPre.setBounds(10, 100, 27, 14);
 		
 		JLabel lblEsp = new JLabel("Espaços");
+		lblEsp.setBounds(10, 134, 39, 14);
 		
 		JLabel lblDes = new JLabel("Descrição");
+		lblDes.setBounds(10, 167, 46, 14);
 		
 		textId = new JTextField();
+		textId.setBounds(135, 29, 86, 20);
 		textId.setColumns(10);
 		
 		textNome = new JTextField();
+		textNome.setBounds(135, 63, 86, 20);
 		textNome.setColumns(10);
 		
 		textPre = new JTextField();
+		textPre.setBounds(135, 97, 86, 20);
 		textPre.setColumns(10);
 		
 		textEsp = new JTextField();
+		textEsp.setBounds(135, 131, 86, 20);
 		textEsp.setColumns(10);
 		
 		textDes = new JTextField();
+		textDes.setBounds(135, 164, 86, 20);
 		textDes.setColumns(10);
 		
 		JButton btnAdi = new JButton("Adicionar");
+		btnAdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão adicionar-cadastrar	
+			Armadura add = new Armadura();
+			add.ID = Integer.parseInt(textId.getText());
+			add.nome = textNome.getText();
+			add.preco = Integer.parseInt(textPre.getText());
+			add.espacos = Integer.parseInt(textEsp.getText());
+			add.descricao = textDes.getText();
+			add.facilidadeUso = textFac.getText();
+			add.bonus = Integer.parseInt(textBon.getText());
+			add.penalidade = Integer.parseInt(textPen.getText());
+			armaduraDAO.adicionar(add);
+			}
+		});
+		btnAdi.setBounds(486, 28, 79, 23);
 		
 		JButton btnPes = new JButton("Pesquisar");
+		btnPes.setBounds(486, 62, 79, 23);
 		btnPes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//clique no botão de pesquisa
@@ -101,144 +128,52 @@ public class TelaCadastrarArmadura extends JInternalFrame {
 		});
 		
 		JButton btnEdi = new JButton("Editar");
+		btnEdi.setBounds(486, 96, 79, 23);
 		
 		JButton btnExc = new JButton("Excluir");
+		btnExc.setBounds(486, 130, 79, 23);
 		
 		JLabel lblUso = new JLabel("Facilidade de uso");
+		lblUso.setBounds(10, 223, 82, 14);
 		
 		textFac = new JTextField();
+		textFac.setBounds(135, 220, 86, 20);
 		textFac.setColumns(10);
 		
 		JLabel lblBon = new JLabel("Bônus");
+		lblBon.setBounds(10, 251, 47, 14);
 		
 		textBon = new JTextField();
+		textBon.setBounds(135, 251, 86, 20);
 		textBon.setColumns(10);
 		
 		textPen = new JTextField();
+		textPen.setBounds(135, 282, 86, 20);
 		textPen.setColumns(10);
 		
 		JLabel lblPen = new JLabel("Penalidade");
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblID, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-							.addGap(103)
-							.addComponent(textId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(265)
-							.addComponent(btnAdi, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblNome, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-							.addGap(71)
-							.addComponent(textNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(265)
-							.addComponent(btnPes))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblPre)
-							.addGap(98)
-							.addComponent(textPre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(265)
-							.addComponent(btnEdi, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblEsp)
-							.addGap(86)
-							.addComponent(textEsp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(265)
-							.addComponent(btnExc, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addComponent(lblDes)
-							.addGap(79)
-							.addComponent(textDes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(10)
-									.addComponent(lblUso))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addContainerGap()
-									.addComponent(lblBon, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(13)
-									.addComponent(lblPen)))
-							.addGap(43)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textBon, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textPen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(59, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(28)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addComponent(lblID))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(1)
-							.addComponent(textId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnAdi))
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addComponent(lblNome))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(1)
-							.addComponent(textNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnPes))
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addComponent(lblPre))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(1)
-							.addComponent(textPre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnEdi))
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addComponent(lblEsp))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(1)
-							.addComponent(textEsp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnExc))
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblDes))
-						.addComponent(textDes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(36)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblUso))
-						.addComponent(textFac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textBon, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblBon))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textPen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(12)
-							.addComponent(lblPen)))
-					.addGap(148))
-		);
-		getContentPane().setLayout(groupLayout);
+		lblPen.setBounds(13, 283, 52, 14);
+		getContentPane().setLayout(null);
+		getContentPane().add(lblID);
+		getContentPane().add(textId);
+		getContentPane().add(btnAdi);
+		getContentPane().add(lblNome);
+		getContentPane().add(textNome);
+		getContentPane().add(btnPes);
+		getContentPane().add(lblPre);
+		getContentPane().add(textPre);
+		getContentPane().add(btnEdi);
+		getContentPane().add(lblEsp);
+		getContentPane().add(textEsp);
+		getContentPane().add(btnExc);
+		getContentPane().add(lblDes);
+		getContentPane().add(textDes);
+		getContentPane().add(lblUso);
+		getContentPane().add(lblBon);
+		getContentPane().add(lblPen);
+		getContentPane().add(textBon);
+		getContentPane().add(textFac);
+		getContentPane().add(textPen);
 
 	}
 

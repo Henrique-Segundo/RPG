@@ -116,6 +116,24 @@ public class TelaCadastrarArma extends JInternalFrame {
 		JLabel lblTip = new JLabel("Tipo");
 		
 		JButton btnAdi = new JButton("Adicionar");
+		btnAdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão adicionar-cadastrar
+			Arma add = new Arma();
+			add.ID = Integer.parseInt(textId.getText());
+			add.nome = textNome.getText();
+			add.preco = Integer.parseInt(textPre.getText());
+			add.espacos = Integer.parseInt(textEsp.getText());
+			add.descricao = textDes.getText();
+			add.facilidadeUso = textFac.getText();
+			add.proposito = textPro.getText();
+			add.dano = textDan.getText();
+			add.critico = textCri.getText();
+			add.alcance = textAlc.getText();
+			add.tipo = textTip.getText();
+			armaDAO.adicionar(add);
+			}
+		});
 		
 		JButton btnPes = new JButton("Pesquisar");
 		btnPes.addActionListener(new ActionListener() {

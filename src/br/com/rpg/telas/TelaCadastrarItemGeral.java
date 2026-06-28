@@ -78,6 +78,19 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 		textDes.setColumns(10);
 		
 		JButton btnAdi = new JButton("Adicionar");
+		btnAdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão adicionar-cadastrar	
+			ItemGeral add = new ItemGeral();
+			add.ID = Integer.parseInt(textId.getText());
+			add.nome = textNome.getText();
+			add.preco = Integer.parseInt(textPre.getText());
+			add.espacos = Integer.parseInt(textEsp.getText());
+			add.descricao = textDes.getText();
+			add.efeito = textEfe.getText();
+			itemGeralDAO.adicionar(add);
+			}
+		});
 		
 		JButton btnPes = new JButton("Pesquisar");
 		btnPes.addActionListener(new ActionListener() {

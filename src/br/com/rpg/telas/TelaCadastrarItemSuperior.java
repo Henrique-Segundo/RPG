@@ -62,6 +62,17 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 		textEfe.setColumns(10);
 		
 		JButton btnAdi = new JButton("Adicionar");
+		btnAdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão adicionar-cadastrar
+			ItemSuperior add = new ItemSuperior();
+			add.id = Integer.parseInt(textId.getText());
+			add.modificacao =  textMod.getText();
+			add.efeito =  textEfe.getText();
+			add.descricao = textDes.getText();
+			itemSuperiorDAO.adicionar(add);
+			}
+		});
 		
 		JButton btnPes = new JButton("Pesquisar");
 		btnPes.addActionListener(new ActionListener() {
@@ -71,6 +82,7 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 			textMod.setText(resultado.modificacao);
 			textEfe.setText(resultado.efeito);
 			textDes.setText(resultado.descricao);
+			
 			}
 		});
 		
