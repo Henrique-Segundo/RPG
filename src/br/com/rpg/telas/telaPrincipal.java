@@ -14,10 +14,13 @@ import java.awt.FlowLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import javax.swing.JDesktopPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class telaPrincipal extends JFrame {
 
@@ -77,12 +80,29 @@ public class telaPrincipal extends JFrame {
 		menuBar.add(MenAju);
 		
 		JMenuItem MenAjuSobre = new JMenuItem("Sobre");
+		MenAjuSobre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Pagina de sobre
+				TelaSobre sobre = new TelaSobre();
+				sobre.setVisible(true);
+			}
+		});
 		MenAju.add(MenAjuSobre);
 		
 		JMenu MenOpc = new JMenu("Opções");
 		menuBar.add(MenOpc);
 		
 		JMenuItem MenOpcSair = new JMenuItem("Sair");
+		MenOpcSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//codigo para fechar o programa
+				int sair = JOptionPane.showConfirmDialog(null,"Sair do programa?","Fechar",JOptionPane.YES_NO_OPTION);
+				if(sair == JOptionPane.YES_OPTION) {
+					System.exit(0);	
+				}
+			}
+		});
 		MenOpcSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
 		MenOpc.add(MenOpcSair);
 		

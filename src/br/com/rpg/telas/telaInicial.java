@@ -68,11 +68,8 @@ public class telaInicial extends JFrame {
 		subTitulo.setBounds(139, 36, 161, 14);
 		contentPane.add(subTitulo);
 		
-		JLabel descricao = new JLabel("<html>Prototipo para POO 26.01 <br>"
-				+ "Alunos:<br>"
-				+ "Henrique Segundo<br>"
-				+ "João Amauri</html>");
-		descricao.setBounds(57, 97, 152, 70);
+		JLabel descricao = new JLabel("<html>Prototipo para POO 26.01 <br>Alunos:<br>Ântonio Pedro<br>Henrique Segundo<br>João Amauri</html>");
+		descricao.setBounds(57, 83, 152, 84);
 		contentPane.add(descricao);
 		
 		JButton btnConectar = new JButton("Iniciar");
