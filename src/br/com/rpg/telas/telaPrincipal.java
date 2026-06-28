@@ -68,7 +68,7 @@ public class telaPrincipal extends JFrame {
 		JMenuItem menCadArmas = new JMenuItem("Armas");
 		menCadArmas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//tela cadastrar usuario
+			//tela cadastrar arma
 				TelaCadastrarArma arma = new TelaCadastrarArma();
 				arma.setVisible(true);
 				desktop.add(arma);
@@ -79,14 +79,38 @@ public class telaPrincipal extends JFrame {
 		menCad.add(menCadArmas);
 		
 		JMenuItem menCadArmaduras = new JMenuItem("Armaduras");
+		menCadArmaduras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//tela cadsatrar armaduras e escudos
+				TelaCadastrarArmadura armadura = new TelaCadastrarArmadura();
+				armadura.setVisible(true);
+				desktop.add(armadura);
+			}
+		});
 		menCadArmaduras.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.CTRL_DOWN_MASK));
 		menCad.add(menCadArmaduras);
 		
 		JMenuItem menCadItensGerais = new JMenuItem("Itens Gerais");
+		menCadItensGerais.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			// Tela cadastrar Itens Gerais
+				TelaCadastrarItemGeral geral = new TelaCadastrarItemGeral();
+				geral.setVisible(true);
+				desktop.add(geral);
+			}
+		});
 		menCadItensGerais.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, InputEvent.CTRL_DOWN_MASK));
 		menCad.add(menCadItensGerais);
 		
 		JMenuItem menCadItensSueriores = new JMenuItem("Itens superiores");
+		menCadItensSueriores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//Abrir tela Intens superiores
+				TelaCadastrarItemSuperior superior = new TelaCadastrarItemSuperior();
+				superior.setVisible(true);
+				desktop.add(superior);
+			}
+		});
 		menCadItensSueriores.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, InputEvent.CTRL_DOWN_MASK));
 		menCad.add(menCadItensSueriores);
 		
