@@ -33,7 +33,7 @@ public class ArmaduraRepository {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				Armadura a = new Armadura();
-				a.id = rs.getInt("id");
+				a.ID = rs.getInt("id");
 				a.nome = rs.getString("nome");
 				a.preco = rs.getInt("preco");
 				a.espacos = rs.getInt("espacos");
@@ -62,7 +62,7 @@ public class ArmaduraRepository {
 			rs = pst.executeQuery();
 			if (rs.next()) {
 				armadura = new Armadura();
-				armadura.id = rs.getInt("id");
+				armadura.ID = rs.getInt("id");
 				armadura.nome = rs.getString("nome");
 				armadura.preco = rs.getInt("preco");
 				armadura.espacos = rs.getInt("espacos");

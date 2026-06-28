@@ -2,10 +2,10 @@ package rpg;
 
 public abstract class Equipamento {
 
-	int ID;
-	String nome;
-	int preco;
-	int espacos;
-	String descricao;
+	public int ID;
+	public String nome;
+	public int preco;
+	public int espacos;
+	public String descricao;
 	
 }

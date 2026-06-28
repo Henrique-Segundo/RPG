@@ -33,7 +33,7 @@ public class ItemGeralRepository {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				IntemGeral i = new IntemGeral();
-				i.id = rs.getInt("id");
+				i.ID = rs.getInt("id");
 				i.nome = rs.getString("nome");
 				i.preco = rs.getInt("preco");
 				i.espacos = rs.getInt("espacos");
@@ -60,7 +60,7 @@ public class ItemGeralRepository {
 			rs = pst.executeQuery();
 			if (rs.next()) {
 				item = new IntemGeral();
-				item.id = rs.getInt("id");
+				item.ID = rs.getInt("id");
 				item.nome = rs.getString("nome");
 				item.preco = rs.getInt("preco");
 				item.espacos = rs.getInt("espacos");

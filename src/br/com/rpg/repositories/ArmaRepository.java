@@ -33,7 +33,7 @@ public class ArmaRepository {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				Arma a = new Arma();
-				a.id = rs.getInt("id");
+				a.ID = rs.getInt("id");
 				a.nome = rs.getString("nome");
 				a.preco = rs.getInt("preco");
 				a.espacos = rs.getInt("espacos");
@@ -65,7 +65,7 @@ public class ArmaRepository {
 			rs = pst.executeQuery();
 			if (rs.next()) {
 				arma = new Arma();
-				arma.id = rs.getInt("id");
+				arma.ID = rs.getInt("id");
 				arma.nome = rs.getString("nome");
 				arma.preco = rs.getInt("preco");
 				arma.espacos = rs.getInt("espacos");
