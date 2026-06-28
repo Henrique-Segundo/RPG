@@ -18,6 +18,7 @@ import rpg.Arma;
 
 public class TelaCadastrarArma extends JInternalFrame {
 
+	//instanciação da ligação com o banco
 	ArmaRepository armaDAO = new ArmaRepository();
 	
 	private static final long serialVersionUID = 1L;

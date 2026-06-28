@@ -1,6 +1,6 @@
 package rpg;
 
-public class IntemGeral extends Equipamento{
+public class ItemGeral extends Equipamento{
 
 	public int equipamento_id;
 	public String efeito;

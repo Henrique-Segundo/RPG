@@ -5,19 +5,27 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import br.com.rpg.repositories.ItemGeralRepository;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import rpg.ItemGeral;
+
 
 public class TelaCadastrarItemGeral extends JInternalFrame {
 
+	//Instanciação da ligação com o banco
+	ItemGeralRepository itemGeralDAO = new ItemGeralRepository();
+	
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textId;
+	private JTextField textNome;
+	private JTextField textPre;
+	private JTextField textEsp;
+	private JTextField textDes;
 	private JTextField textEfe;
 
 	/**
@@ -42,7 +50,7 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 	public TelaCadastrarItemGeral() {
 		setPreferredSize(new Dimension(640, 480));
 		setTitle("Item geral");
-		setBounds(100, 100, 640, 480);
+		setBounds(0, 0, 640, 480);
 		
 		JLabel lblID = new JLabel("Id");
 		
@@ -54,24 +62,35 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 		
 		JLabel lblDes = new JLabel("Descrição");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textId = new JTextField();
+		textId.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textNome = new JTextField();
+		textNome.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textPre = new JTextField();
+		textPre.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		textEsp = new JTextField();
+		textEsp.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		textDes = new JTextField();
+		textDes.setColumns(10);
 		
 		JButton btnAdi = new JButton("Adicionar");
 		
 		JButton btnPes = new JButton("Pesquisar");
+		btnPes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clique no botão pesquisar
+			ItemGeral resultado = itemGeralDAO.listarPorId(Integer.parseInt(textId.getText()));
+			textNome.setText(resultado.nome);
+			textPre.setText(Integer.toString(resultado.preco));
+			textEsp.setText(Integer.toString(resultado.espacos));
+			textDes.setText(resultado.descricao);
+			textEfe.setText(resultado.efeito);
+			}
+		});
 		
 		JButton btnEdi = new JButton("Editar");
 		
@@ -90,25 +109,25 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblID, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 							.addGap(103)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(265)
 							.addComponent(btnAdi, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblNome, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 							.addGap(71)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(265)
 							.addComponent(btnPes, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblPre, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
 							.addGap(98)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textPre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(265)
 							.addComponent(btnEdi, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblEsp, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 							.addGap(86)
-							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textEsp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(265)
 							.addComponent(btnExc, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
@@ -118,7 +137,7 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 							.addGap(79)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(textEfe, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(textDes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(59, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -131,7 +150,7 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 							.addComponent(lblID))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(btnAdi))
 					.addGap(11)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -140,7 +159,7 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 							.addComponent(lblNome))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(btnPes))
 					.addGap(11)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -149,7 +168,7 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 							.addComponent(lblPre))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textPre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(btnEdi))
 					.addGap(11)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -158,14 +177,14 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 							.addComponent(lblEsp))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(1)
-							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textEsp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(btnExc))
 					.addGap(11)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(3)
 							.addComponent(lblDes))
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textDes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(30)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblEfe)

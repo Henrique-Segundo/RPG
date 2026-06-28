@@ -10,14 +10,22 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import br.com.rpg.repositories.ItemGeralRepository;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import rpg.ItemSuperior;
+import br.com.rpg.repositories.ItemSuperiorRepository;
 
 public class TelaCadastrarItemSuperior extends JInternalFrame {
 
+		//Instanciação da ligação com o banco
+		ItemSuperiorRepository itemSuperiorDAO = new ItemSuperiorRepository();
+	
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textId;
+	private JTextField textEfe;
+	private JTextField textDes;
+	private JTextField textMod;
 
 	/**
 	 * Launch the application.
@@ -41,21 +49,30 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 	public TelaCadastrarItemSuperior() {
 		setPreferredSize(new Dimension(640, 480));
 		setTitle("Item superior");
-		setBounds(100, 100, 640, 480);
+		setBounds(0, 0, 640, 480);
 		
 		JLabel lblID = new JLabel("Id");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textId = new JTextField();
+		textId.setColumns(10);
 		
 		JLabel lblEfe = new JLabel("Efeito");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textEfe = new JTextField();
+		textEfe.setColumns(10);
 		
 		JButton btnAdi = new JButton("Adicionar");
 		
 		JButton btnPes = new JButton("Pesquisar");
+		btnPes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clique no botão pesquisar
+			ItemSuperior resultado = itemSuperiorDAO.listarPorId(Integer.parseInt(textId.getText()));
+			textMod.setText(resultado.modificacao);
+			textEfe.setText(resultado.efeito);
+			textDes.setText(resultado.descricao);
+			}
+		});
 		
 		JButton btnEdi = new JButton("Editar");
 		
@@ -63,11 +80,11 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 		
 		JLabel lblDes = new JLabel("Descrição");
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textDes = new JTextField();
+		textDes.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		textMod = new JTextField();
+		textMod.setColumns(10);
 		
 		JLabel lblMod = new JLabel("Modificação");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -82,10 +99,10 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 						.addComponent(lblMod))
 					.addGap(79)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textMod, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textEfe, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textDes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnAdi, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
@@ -114,18 +131,18 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblID)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(textId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(13)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textMod, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblMod))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textEfe, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblEfe))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textDes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblDes))))
 					.addContainerGap(297, Short.MAX_VALUE))
 		);

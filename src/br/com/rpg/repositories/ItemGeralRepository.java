@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import br.com.rpg.dal.ModuloConexao;
-import rpg.IntemGeral;
+import rpg.ItemGeral;
 
 public class ItemGeralRepository {
 	private Connection conexao = null;
@@ -19,9 +19,9 @@ public class ItemGeralRepository {
 		this.conexao = ModuloConexao.conector();
 	}
 
-	public List<IntemGeral> listar() {
+	public List<ItemGeral> listar() {
 		
-		List<IntemGeral> lista = new ArrayList<>();
+		List<ItemGeral> lista = new ArrayList<>();
 		String sql = """
 				 SELECT e.id,e.nome,e.preco,e.espacos,e.descricao,i.efeito
 				 FROM tbitemgeral AS i, tbequipamento AS e
@@ -32,7 +32,7 @@ public class ItemGeralRepository {
 			pst = conexao.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				IntemGeral i = new IntemGeral();
+				ItemGeral i = new ItemGeral();
 				i.ID = rs.getInt("id");
 				i.nome = rs.getString("nome");
 				i.preco = rs.getInt("preco");
@@ -47,8 +47,8 @@ public class ItemGeralRepository {
 		return lista;
 	}
 
-	public IntemGeral listarPorId(int id) {
-		IntemGeral item = null;
+	public ItemGeral listarPorId(int id) {
+		ItemGeral item = null;
 		String sql = """
 				SELECT e.id,e.nome,e.preco,e.espacos,e.descricao,i.efeito
 				FROM tbitemgeral AS i, tbequipamento AS e
@@ -59,7 +59,7 @@ public class ItemGeralRepository {
 			pst.setInt(1, id);
 			rs = pst.executeQuery();
 			if (rs.next()) {
-				item = new IntemGeral();
+				item = new ItemGeral();
 				item.ID = rs.getInt("id");
 				item.nome = rs.getString("nome");
 				item.preco = rs.getInt("preco");
@@ -73,7 +73,7 @@ public class ItemGeralRepository {
 		return item;
 	}
 
-	public void adicionar(IntemGeral item) {
+	public void adicionar(ItemGeral item) {
 		String sql = """
 						INSERT INTO tbequipamento
 							(nome,preco,espacos,descricao)
@@ -108,7 +108,7 @@ public class ItemGeralRepository {
 		}
 	}
 
-	public void editar(int id, IntemGeral item) {
+	public void editar(int id, ItemGeral item) {
 		String sqlEquipamento = """
 					UPDATE tbequipamento
 					SET nome=?, preco=?, espacos=?,descricao=?
