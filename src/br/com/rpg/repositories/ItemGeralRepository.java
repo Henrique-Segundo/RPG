@@ -23,13 +23,22 @@ public class ItemGeralRepository {
     public List<IntemGeral> listar() {
         // usa a mesma conexão
     	List<IntemGeral> lista = new ArrayList<>();
-    	String sql = "SELECT * FROM tbitemgeral";
+    	String sql = """
+    			 SELECT e.id,e.nome,e.preco,e.espacos,e.descricao,i.efeito
+    			 FROM tbitemgeral AS i, tbequipamento AS e
+    			 WHERE e.id=i.equipamento_id
+    					
+    			""";
     	try {
     		pst=conexao.prepareStatement(sql);
     		rs=pst.executeQuery();
     		while(rs.next()) {
     			IntemGeral i = new IntemGeral();
-    			    i.equipamento_id = rs.getInt("equipamento_id");
+    				i.id = rs.getInt("id");
+    				i.nome = rs.getString("nome");
+					i.preco = rs.getInt("preco");
+					i.espacos = rs.getInt("espacos");
+					i.descricao = rs.getString("descricao");
     			    i.efeito = rs.getString("efeito");
     			    lista.add(i);
             }
