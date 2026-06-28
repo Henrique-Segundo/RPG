@@ -2,6 +2,7 @@ package rpg;
 
 public class IntemGeral extends Equipamento{
 
-	String efeito;
+	public int equipamento_id;
+	public String efeito;
 	
 }
