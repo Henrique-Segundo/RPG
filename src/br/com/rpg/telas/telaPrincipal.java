@@ -57,43 +57,43 @@ public class telaPrincipal extends JFrame {
 		menuBar.setBounds(0, 0, 729, 22);
 		getContentPane().add(menuBar);
 		
-		JMenu MenCad = new JMenu("Cadastro");
-		menuBar.add(MenCad);
+		JMenu menCad = new JMenu("Cadastro");
+		menuBar.add(menCad);
 		
-		JMenuItem MenCadArmas = new JMenuItem("Armas");
-		MenCadArmas.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.CTRL_DOWN_MASK));
-		MenCad.add(MenCadArmas);
+		JMenuItem menCadArmas = new JMenuItem("Armas");
+		menCadArmas.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.CTRL_DOWN_MASK));
+		menCad.add(menCadArmas);
 		
-		JMenuItem MenCadArmaduras = new JMenuItem("Armaduras");
-		MenCadArmaduras.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.CTRL_DOWN_MASK));
-		MenCad.add(MenCadArmaduras);
+		JMenuItem menCadArmaduras = new JMenuItem("Armaduras");
+		menCadArmaduras.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.CTRL_DOWN_MASK));
+		menCad.add(menCadArmaduras);
 		
-		JMenuItem MenCadItensGerais = new JMenuItem("Itens Gerais");
-		MenCadItensGerais.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, InputEvent.CTRL_DOWN_MASK));
-		MenCad.add(MenCadItensGerais);
+		JMenuItem menCadItensGerais = new JMenuItem("Itens Gerais");
+		menCadItensGerais.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, InputEvent.CTRL_DOWN_MASK));
+		menCad.add(menCadItensGerais);
 		
-		JMenuItem MenCadItensSueriores = new JMenuItem("Itens superiores");
-		MenCadItensSueriores.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, InputEvent.CTRL_DOWN_MASK));
-		MenCad.add(MenCadItensSueriores);
+		JMenuItem menCadItensSueriores = new JMenuItem("Itens superiores");
+		menCadItensSueriores.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, InputEvent.CTRL_DOWN_MASK));
+		menCad.add(menCadItensSueriores);
 		
-		JMenu MenAju = new JMenu("Ajuda");
-		menuBar.add(MenAju);
+		JMenu menAju = new JMenu("Ajuda");
+		menuBar.add(menAju);
 		
-		JMenuItem MenAjuSobre = new JMenuItem("Sobre");
-		MenAjuSobre.addActionListener(new ActionListener() {
+		JMenuItem menAjuSobre = new JMenuItem("Sobre");
+		menAjuSobre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Pagina de sobre
 				TelaSobre sobre = new TelaSobre();
 				sobre.setVisible(true);
 			}
 		});
-		MenAju.add(MenAjuSobre);
+		menAju.add(menAjuSobre);
 		
-		JMenu MenOpc = new JMenu("Opções");
-		menuBar.add(MenOpc);
+		JMenu menOpc = new JMenu("Opções");
+		menuBar.add(menOpc);
 		
-		JMenuItem MenOpcSair = new JMenuItem("Sair");
-		MenOpcSair.addActionListener(new ActionListener() {
+		JMenuItem menOpcSair = new JMenuItem("Sair");
+		menOpcSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				//codigo para fechar o programa
@@ -103,12 +103,12 @@ public class telaPrincipal extends JFrame {
 				}
 			}
 		});
-		MenOpcSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
-		MenOpc.add(MenOpcSair);
+		menOpcSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
+		menOpc.add(menOpcSair);
 		
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(10, 33, 709, 403);
-		getContentPane().add(desktopPane);
+		JDesktopPane desktop = new JDesktopPane();
+		desktop.setBounds(10, 33, 709, 403);
+		getContentPane().add(desktop);
 
 	}
 }
