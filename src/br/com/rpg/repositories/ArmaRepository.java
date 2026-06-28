@@ -26,13 +26,21 @@ public class ArmaRepository {
     public List<Arma> listar() {
         // usa a mesma conexão
     	List<Arma> lista = new ArrayList<>();
-    	String sql = "SELECT * FROM tbarma";
+    	String sql = """
+    				SELECT e.id,e.nome,e.preco,e.espacos,e.descricao,a.facilidadeUso,a.proposito,a.dano,a.critico,a.alcance,a.tipo
+    				FROM tbarma AS a, tbequipamento AS e
+    				WHERE WHERE e.id=a.equipamento_id
+    				""";
     	try {
     		pst=conexao.prepareStatement(sql);
     		rs=pst.executeQuery();
     		while(rs.next()) {
     			Arma a = new Arma();
-    			    a.equipamento_id = rs.getInt("equipamento_id");
+    				a.id = rs.getInt("id");
+    				a.nome = rs.getString("nome");
+    				a.preco = rs.getInt("preco");
+    				a.espacos = rs.getInt("espacos");
+    				a.descricao = rs.getString("descricao");
     			    a.facilidadeUso = rs.getString("facilidadeUso");
     			    a.proposito = rs.getString("proposito");
     			    a.dano = rs.getString("dano");

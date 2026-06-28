@@ -24,13 +24,21 @@ public class ArmaduraRepository {
 	public List<Armadura> listar() {
         // usa a mesma conexão
     	List<Armadura> lista = new ArrayList<>();
-    	String sql = "SELECT * FROM tbarmadura";
+    	String sql = """
+    					SELECT e.id,e.nome,e.preco,e.espacos,e.descricao,a.facilidadeUso,a.bonus,a.penalidade
+    					FROM tbarmadura AS a, tbequipamento AS e
+    					WHERE e.id=a.equipamento_id
+    					""";
     	try {
     		pst=conexao.prepareStatement(sql);
     		rs=pst.executeQuery();
     		while(rs.next()) {
     			Armadura a = new Armadura();
-    			    a.equipamento_id = rs.getInt("equipamento_id");
+    				a.id = rs.getInt("id");
+    				a.nome = rs.getString("nome");
+    				a.preco = rs.getInt("preco");
+    				a.espacos = rs.getInt("espacos");
+    				a.descricao = rs.getString("descricao");
     			    a.facilidadeUso = rs.getString("facilidadeUso");
     			    a.bonus= rs.getInt("bonus");
     			    a.penalidade = rs.getInt("penalidade");
