@@ -21,6 +21,7 @@ import java.awt.event.InputEvent;
 import javax.swing.JDesktopPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 public class telaPrincipal extends JFrame {
 
@@ -49,18 +50,31 @@ public class telaPrincipal extends JFrame {
 		setResizable(false);
 		setTitle("Tela principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 745, 486);
+		setBounds(100, 100, 680, 565);
 		getContentPane().setLayout(null);
+		
+		JDesktopPane desktop = new JDesktopPane();
+		desktop.setBounds(10, 35, 640, 480);
+		getContentPane().add(desktop);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setToolTipText("");
-		menuBar.setBounds(0, 0, 729, 22);
+		menuBar.setBounds(0, 0, 664, 22);
 		getContentPane().add(menuBar);
 		
 		JMenu menCad = new JMenu("Cadastro");
 		menuBar.add(menCad);
 		
 		JMenuItem menCadArmas = new JMenuItem("Armas");
+		menCadArmas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//tela cadastrar usuario
+				TelaCadastrarArma arma = new TelaCadastrarArma();
+				arma.setVisible(true);
+				desktop.add(arma);
+				
+			}
+		});
 		menCadArmas.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.CTRL_DOWN_MASK));
 		menCad.add(menCadArmas);
 		
@@ -105,10 +119,6 @@ public class telaPrincipal extends JFrame {
 		});
 		menOpcSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
 		menOpc.add(menOpcSair);
-		
-		JDesktopPane desktop = new JDesktopPane();
-		desktop.setBounds(10, 33, 709, 403);
-		getContentPane().add(desktop);
 
 	}
 }
