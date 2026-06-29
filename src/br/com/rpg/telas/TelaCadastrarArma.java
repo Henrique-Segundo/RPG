@@ -154,6 +154,24 @@ public class TelaCadastrarArma extends JInternalFrame {
 		});
 		
 		JButton btnEdi = new JButton("Editar");
+		btnEdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão editar
+				Arma att = new Arma();
+				att.ID = Integer.parseInt(textId.getText());
+				att.nome = textNome.getText();
+				att.preco = Integer.parseInt(textPre.getText());
+				att.espacos = Integer.parseInt(textEsp.getText());
+				att.descricao = textDes.getText();
+				att.facilidadeUso = textFac.getText();
+				att.proposito = textPro.getText();
+				att.dano = textDan.getText();
+				att.critico = textCri.getText();
+				att.alcance = textAlc.getText();
+				att.tipo = textTip.getText();
+				armaDAO.editar(att.ID, att);
+			}
+		});
 		
 		JButton btnExc = new JButton("Excluir");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());

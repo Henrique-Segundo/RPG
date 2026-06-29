@@ -128,6 +128,21 @@ public class TelaCadastrarArmadura extends JInternalFrame {
 		});
 		
 		JButton btnEdi = new JButton("Editar");
+		btnEdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão editar
+				Armadura att = new Armadura();
+				att.ID = Integer.parseInt(textId.getText());
+				att.nome = textNome.getText();
+				att.preco = Integer.parseInt(textPre.getText());
+				att.espacos = Integer.parseInt(textEsp.getText());
+				att.descricao = textDes.getText();
+				att.facilidadeUso = textFac.getText();
+				att.bonus = Integer.parseInt(textBon.getText());
+				att.penalidade = Integer.parseInt(textPen.getText());	
+				armaduraDAO.editar(att.ID, att);
+			}
+		});
 		btnEdi.setBounds(486, 96, 79, 23);
 		
 		JButton btnExc = new JButton("Excluir");

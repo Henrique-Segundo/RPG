@@ -87,6 +87,17 @@ public class TelaCadastrarItemSuperior extends JInternalFrame {
 		});
 		
 		JButton btnEdi = new JButton("Editar");
+		btnEdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão editar
+				ItemSuperior att = new ItemSuperior();
+				att.id = Integer.parseInt(textId.getText());
+				att.modificacao =  textMod.getText();
+				att.efeito =  textEfe.getText();
+				att.descricao = textDes.getText();
+				itemSuperiorDAO.editar(att.id, att);
+			}
+		});
 		
 		JButton btnExc = new JButton("Excluir");
 		

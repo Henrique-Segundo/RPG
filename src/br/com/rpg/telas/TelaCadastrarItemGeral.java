@@ -106,6 +106,19 @@ public class TelaCadastrarItemGeral extends JInternalFrame {
 		});
 		
 		JButton btnEdi = new JButton("Editar");
+		btnEdi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//clicar no botão editar
+				ItemGeral att = new ItemGeral();
+				att.ID = Integer.parseInt(textId.getText());
+				att.nome = textNome.getText();
+				att.preco = Integer.parseInt(textPre.getText());
+				att.espacos = Integer.parseInt(textEsp.getText());
+				att.descricao = textDes.getText();
+				att.efeito = textEfe.getText();
+				itemGeralDAO.editar(att.ID, att);
+			}
+		});
 		
 		JButton btnExc = new JButton("Excluir");
 		
